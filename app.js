@@ -86,6 +86,13 @@ var getUnanswered = function(tags) {
 		var errorElem = showError(error);
 		$('.search-results').append(errorElem);
 	});
+
+
+var getTopAnswerers = function() {
+	
+}
+
+
 };
 
 

@@ -1,28 +1,27 @@
 $(document).ready( function() {
 
-$(".inspiration-getter").submit(function(e){
-		e.preventDefault();
-		var tags2 = $("#input").val();
-		getTopAnswerers(tags2);
-	});
-var getTopAnswerers = function(tags2) {
 
-var request = {tagged:tags2,
+var request = {
 								site:'stackoverflow',
 								order:'desc',
 								sort:'creation'};
-var t = $("#input").val();
+
+$(".inspiration-getter").submit(function(e){
+		e.preventDefault();
+		var t = $("#input").val();
+	});
+
 	  $.ajax({
-		url:"http://api.stackexchange.com/2.2/tags/"+ tags2 +"/top-answerers/all_time",
+		url:"http://api.stackexchange.com/2.2/tags/"+ t +"/top-answerers/all_time",
 		data: request,
 		dataType: 'jsonp',
 		type: 'GET',
 		success:function(data) {
-			console.log(data.items);
+			console.log(data);
 		}
 })
 
-};
+
 
 /*-----------------------------------------------------------*/
 

@@ -1,4 +1,30 @@
 $(document).ready( function() {
+
+
+var request = {
+								site:'stackoverflow',
+								order:'desc',
+								sort:'creation'};
+
+$(".inspiration-getter").submit(function(e){
+		e.preventDefault();
+		var t = $("#input").val();
+	});
+
+	  $.ajax({
+		url:"http://api.stackexchange.com/2.2/tags/"+ t +"/top-answerers/all_time",
+		data: request,
+		dataType: 'jsonp',
+		type: 'GET',
+		success:function(data) {
+			console.log(data);
+		}
+})
+
+
+
+/*-----------------------------------------------------------*/
+
 	$('.unanswered-getter').submit( function(event){
 		// zero out results if previous search has run
 		$('.results').html('');
@@ -87,13 +113,40 @@ var getUnanswered = function(tags) {
 		$('.search-results').append(errorElem);
 	});
 
-
-var getTopAnswerers = function() {
+/*var getTopAnswerers = function(answerers) {
 	
-}
+	$(".inspiration-getter").submit(function(e){
+		e.preventDefault();
+		var t = $("#input").val();
+	});
+
+
+	var request = {answered: answerer,
+								site:'stackoverflow',
+								order:'desc',
+								sort:'creation'};
+
+	$.ajax({
+		url:"http://api.stackexchange.com/2.2/tags/"+ t +"/top-answerers/all_time",
+		data: request,
+		dataType: 'jsonp',
+		type: 'GET',
+		success:function(data) {
+			console.log(data);
+		}
+	})
+};*/
+
+
+
+
+
+
+
+
+
 
 
 };
-
 
 
